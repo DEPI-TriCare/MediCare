@@ -1,14 +1,12 @@
-﻿
+﻿using Domains;
 using System.ComponentModel;
 
 namespace MediCare.Core.Entities
 {
-    public class Doctor
+    public class Doctor : BaseTable
     {
-        public int Id { get; set; }
         public string UserId { get; set; } = string.Empty;
-        public ApplicationUser User { get; set; }
-        public int SpecializationId { get; set; }
+        public Guid SpecializationId { get; set; }
         public Specialization Specialization { get; set; }
         public decimal ConsultationFee { get; set; }
         public string ProfilePictureUrl { get; set; }

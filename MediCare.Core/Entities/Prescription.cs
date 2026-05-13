@@ -1,14 +1,15 @@
 ﻿
+using Domains;
+
 namespace MediCare.Core.Entities
 {
-    public class Prescription
+    public class Prescription : BaseTable
     {
-        public int Id { get; set; }
-        public int MedicalRecordId { get; set; }
-        public MedicalRecord MedicalRecord { get; set; }
-        public string MedicationName { get; set; }
-        public string Dosage { get; set; }
-        public string Frequency { get; set; }
-        public string Duration { get; set; }
+        public Guid MedicalRecordId { get; set; }
+        public MedicalRecord? MedicalRecord { get; set; }
+        public string MedicationName { get; set; } = string.Empty;
+        public string Dosage { get; set; } = string.Empty;
+        public string Frequency { get; set; } = string.Empty;
+        public string Duration { get; set; } = string.Empty;
     }
 }

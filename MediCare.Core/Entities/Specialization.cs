@@ -1,8 +1,9 @@
-﻿namespace MediCare.Core.Entities
+﻿using Domains;
+
+namespace MediCare.Core.Entities
 {
-    public class Specialization
+    public class Specialization : BaseTable
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
     }
 }
