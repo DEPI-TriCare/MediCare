@@ -2,7 +2,7 @@
 
 namespace MediCare.Core.Entities
 {
-    public class ApplicationUser : IdentityUser<int>
+    public class ApplicationUser : IdentityUser
     {
         public Patient Patient { get; set; }
         public Doctor Doctor { get; set; }

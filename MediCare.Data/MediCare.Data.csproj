@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MediCare.Core\MediCare.Core.csproj" />
+    <ProjectReference Include="..\MediCare.Services\MediCare.Application.csproj" />
   </ItemGroup>
 
 </Project>

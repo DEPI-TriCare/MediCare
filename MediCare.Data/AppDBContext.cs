@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace MediCare.Data
 {
-    public class AppDbContext : IdentityDbContext<ApplicationUser, IdentityRole<int>, int>
+    public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<AppointmentLog> AppointmentLogs { get; set; }

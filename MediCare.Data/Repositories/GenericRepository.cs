@@ -23,12 +23,11 @@ namespace MediCare.Data.Repositories
 
         public async Task Delete(TKey id)
         {
-            var entry = await _context.Set<T>().FindAsync(id);
-            if (entry == null)
-            {
+            var entity = await _context.Set<T>().FindAsync(id);
+            if (entity is null)
                 throw new KeyNotFoundException($"Entity with type: {typeof(T)} and id: {id} not found.");
-            }
-            _context.Set<T>().Remove(entry);
+            
+            _context.Set<T>().Remove(entity);
         }
 
         public IQueryable<T> GetAll()
@@ -38,12 +37,13 @@ namespace MediCare.Data.Repositories
 
         public async Task<T?> GetById(TKey id)
         {
-            return await _context.Set<T>().FindAsync(id);
+            var entity = await _context.Set<T>().FindAsync(id);
+            return entity; 
         }
 
-        public async Task Update(T entity)
+        public async Task<T?> Update(T entity)
         {
-            _context.Set<T>().Update(entity);
+            return _context.Set<T>().Update(entity).Entity;
         }
     }
 }
