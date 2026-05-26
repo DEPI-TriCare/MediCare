@@ -1,0 +1,4 @@
+patient: sign up by himself, search for doctors, book an appointment (online or offline), maybe pay, cancel appointment, get notifications about appointment, upload his medical history, view prescriptions given by doctor, get notifications about medication
+doctor: sign up with email given by admin. change his personal data. cancel timeslot temporarily, get notifications about appointment. give prescription digital or written.
+admin: register doctors and give them email, register data for doctor also put timeslots for doctors, has a dashbord about the clinic, patient, and doctors.
+reciptionist: transfer people who came offline only to application, register when people enter and leave and who came and who didn't come. transfer medical records from offline to application. transfer written prescription to system
