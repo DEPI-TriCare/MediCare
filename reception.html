@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receptionist Desk</title>
+    <link rel="stylesheet" href="css/reception.css">
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <h3>MediCare</h3>
+            <p class="panel-sub">Front Office Desk</p>
+            <a href="reception.html" class="active">Admissions Index</a>
+            <a href="index.html" class="logout">Logout</a>
+        </aside>
+        <main class="content">
+            <h2>Front Desk Registry Management</h2>
+            <div class="card">
+                <h3>Admitted Patients Registry</h3>
+                <table class="simple-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Phone Contact</th>
+                        </tr>
+                    </thead>
+                    <tbody id="patientsTableBody"></tbody>
+                </table>
+            </div>
+            <div class="card form-box">
+                <h3>Register New Patient Walk-In</h3>
+                <form id="registerPatientForm">
+                    <div class="form-group">
+                        <label for="pName">Patient Full Name</label>
+                        <input type="text" id="pName" required placeholder="Sarah Smith">
+                    </div>
+                    <div class="form-group">
+                        <label for="pEmail">Email Address</label>
+                        <input type="email" id="pEmail" required placeholder="sarah@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="pPhone">Phone Number</label>
+                        <input type="text" id="pPhone" required placeholder="01234567890">
+                    </div>
+                    <button type="submit" class="btn">Create Patient Account</button>
+                </form>
+            </div>
+            <div class="card form-box">
+                <h3>Book Session for Existing Patient</h3>
+                <form id="recBookForm">
+                    <div class="form-group">
+                        <label for="recPId">Target Patient ID</label>
+                        <input type="number" id="recPId" required placeholder="Patient ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="recDId">Target Doctor ID</label>
+                        <input type="number" id="recDId" required placeholder="Doctor ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="recDate">Appointment Date</label>
+                        <input type="date" id="recDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recTime">Appointment Time</label>
+                        <input type="time" id="recTime" required>
+                    </div>
+                    <button type="submit" class="btn btn-green">Generate Appointment</button>
+                </form>
+            </div>
+        </main>
+    </div>
+    <script src="services/patientService.js"></script>
+    <script src="services/appointmentService.js"></script>
+    <script src="js/reception.js"></script>
+</body>
+</html>

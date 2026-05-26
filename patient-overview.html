@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient - Dashboard</title>
+    <link rel="stylesheet" href="css/patient-overview.css">
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <h3>MediCare</h3>
+            <a href="patient-overview.html" class="active">Overview</a>
+            <a href="find-doctors.html">Find Doctors</a>
+            <a href="medical-records.html">Medical Records</a>
+            <a href="payments.html">Payments</a>
+            <a href="index.html" class="logout">Logout</a>
+        </aside>
+        <main class="content">
+            <h2>Welcome back!</h2>
+            <div class="card">
+                <h3>Your Upcoming Appointments</h3>
+                <div id="appointmentsList" class="appointments-grid"></div>
+            </div>
+        </main>
+    </div>
+    <script src="services/appointmentService.js"></script>
+    <script src="js/patient-overview.js"></script>
+</body>
+</html>
