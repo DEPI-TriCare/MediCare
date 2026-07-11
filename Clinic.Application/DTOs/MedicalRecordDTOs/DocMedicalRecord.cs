@@ -9,26 +9,25 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Transactions;
 
 namespace Clinic.Application.DTOs.MedicalRecordDTOs
 {
     public class DocMedicalRecord : BaseDTO
     {
-        [MaxLength(1000, ErrorMessage ="allergy too long")]
+        [MaxLength(1000)]
         public string? Allergy { get; set; }
 
-        [MaxLength(1000, ErrorMessage ="Notes too long")]
+        [MaxLength(1000)]
         public string? Notes { get; set; }
 
         [Required]
-        [MaxLength(2000, ErrorMessage = "Diagnosis too long")]
+        [MaxLength(2000)]
         public string Diagnosis { get; set; }
 
-        [MaxLength(1000, ErrorMessage = "Chronic Disease too long")]
+        [MaxLength(1000)]
         public string? ChronicDisease { get; set; }
 
-        [MaxLength(1000, ErrorMessage = "Current Medications too long")]
+        [MaxLength(1000)]
         public string? CurrentMedications { get; set; }
 
         [Required]
@@ -44,14 +43,14 @@ namespace Clinic.Application.DTOs.MedicalRecordDTOs
         public Guid PatientId { get; set; }
 
         [Required]
-        [MaxLength(14, ErrorMessage = "enter a valid egyptian national number")]
+        [MaxLength(14)]
         public string NationalNumber { get; set; }
 
         [Required]
-        [MaxLength(15, ErrorMessage = "enter a valid phone number")]
+        [MaxLength(15)]
         public string PhoneNumber { get; set; }
 
-        [MaxLength(150, ErrorMessage = "enter a valid email address")]
+        [MaxLength(150)]
         [EmailAddress]
         public string? Email { get; set; }
 

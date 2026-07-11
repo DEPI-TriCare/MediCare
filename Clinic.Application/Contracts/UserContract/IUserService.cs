@@ -15,7 +15,7 @@ namespace Clinic.Application.Contracts.UserContract
 
         Guid GetLoggedInUser();
 
-        Task<UserResultDTO> RegisterAsyncForPatient(UserDTO registerDto);
+        Task<UserResultDTO> RegisterAsyncForPatient(PatientRegisterDTO registerDto);
         Task<UserResultDTO> LoginAsync(LoginDTO loginDto);
         Task LogoutAsync();
         Task<(UserResultDTO , UserRegistrationResult)> RegisterAsync(UserDTO registerDto);

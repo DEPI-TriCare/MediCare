@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Clinic.UI.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Reciptionist")]
     public class AppointmentController : Controller
     {
         private readonly IAppointmentService _appointmentService;

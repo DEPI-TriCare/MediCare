@@ -66,7 +66,6 @@ namespace UI
                     options.AccessDeniedPath = "/Account/AccessDenied";
                     options.SlidingExpiration = true;
                     options.Cookie.IsEssential = true;
-                    options.ExpireTimeSpan = TimeSpan.FromDays(1);
                 });
 
             builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
@@ -116,6 +115,13 @@ namespace UI
                 name: "doctor",
                 pattern: "{area:Exists}/{controller=Doctor}/{action=Index}/{id?}"
             );
+
+
+            app.MapControllerRoute(
+                name: "patient",
+                pattern: "{area:Exists}/{controller=Patient}/{action=Details}/{id?}"
+            );
+
 
             app.MapControllerRoute(
                 name: "default",

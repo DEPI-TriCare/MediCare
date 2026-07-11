@@ -1,11 +1,13 @@
 ﻿using Clinic.Application.Contracts.MedicalRecordContracts;
 using Clinic.Application.DTOs.MedicalRecordDTOs;
 using Clinic.Application.Helper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Clinic.UI.Areas.patient.Controllers
 {
     [Area("patient")]
+    [Authorize(Roles = "Patient")]
     public class TestController : Controller
     {
         private readonly ITestService _testService;
@@ -36,7 +38,7 @@ namespace Clinic.UI.Areas.patient.Controllers
         {
             if (file != null && file.Length > 0)
             {
-                testDTO.File = await FileHelper.UploadFile(file, "Tests", new[] { ".pdf ", ".png", ".jpg" });
+                testDTO.File = await FileHelper.UploadFile(file, "Tests", new[] { ".pdf", ".png", ".jpg" });
             }
 
             if (!ModelState.IsValid)
@@ -68,7 +70,7 @@ namespace Clinic.UI.Areas.patient.Controllers
             return RedirectToAction(
                 "MedicalRecord",
                 "MedicalRecord",
-                new { area = "doctor", medicalRecordId = testDTO.MedicalRecordId }
+                new { area = "patient", medicalRecordId = testDTO.MedicalRecordId }
             );
         }
     }

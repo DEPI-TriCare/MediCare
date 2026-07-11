@@ -1,10 +1,5 @@
 using Clinic.Core.Enums;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Clinic.Application.DTOs.PatientDTOs
 {
@@ -25,6 +20,8 @@ namespace Clinic.Application.DTOs.PatientDTOs
         [Required]
         [MaxLength(14)]
         public string NationalNumber { get; set; }
+
+        public string? UserId { get; set; }
 
         [Required]
         [MaxLength(15)]

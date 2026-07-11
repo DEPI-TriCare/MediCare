@@ -1,9 +1,11 @@
 ﻿using Clinic.Application.Contracts.PrescriptionContracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Clinic.UI.Areas.patient.Controllers
 {
     [Area("patient")]
+    [Authorize(Roles = "Patient")]
     public class PrescriptionController : Controller
     {
         private readonly IPrescriptionService _prescriptionService;

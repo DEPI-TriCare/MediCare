@@ -14,7 +14,7 @@ namespace Clinic.Application.Contracts.MedicalRecordContracts
     {
         Task<List<DocMedicalRecord>> GetDocMedicalRecords();
         Task<DocMedicalRecord> MedicalRecordDetailsForUser(Guid Id);
-        Task<List<MedicalRecordDTO>> GetMedicalRecordsForUser();
+        Task<List<DocMedicalRecord>> GetMedicalRecordsForUser();
         Task<DocMedicalRecord> MedicalRecordDetails(Guid patientId);
         Task<PageResult<DocMedicalRecord>> GetDocPageMedicalRecords(SearchPatient searchPatient, int pageNumber = 1, int pageSize = 10);
         Task<List<MedicalRecordDTO>> GetPatientMedicalRecords(Guid patientId);

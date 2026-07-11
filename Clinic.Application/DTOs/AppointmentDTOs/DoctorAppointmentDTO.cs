@@ -9,7 +9,7 @@ namespace Clinic.Application.DTOs.AppointmentDTOs
 {
     public class DoctorAppointmentDTO : BaseDTO
     {
-        [Required(ErrorMessage = "please select doctor")]
+        [Required]
         public Guid DoctorId { get; set; }
 
         public DateOnly? Date { get; set; }

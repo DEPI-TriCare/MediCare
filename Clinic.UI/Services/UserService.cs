@@ -137,7 +137,7 @@ namespace Clinic.UI.Services
             await _signInManager.SignOutAsync();
         }
 
-        public async Task<UserResultDTO> RegisterAsyncForPatient(UserDTO registerDto)
+        public async Task<UserResultDTO> RegisterAsyncForPatient(PatientRegisterDTO registerDto)
         {
             var checkUser = await _userManager.FindByNameAsync(registerDto.UserName);
 
@@ -669,3 +669,7 @@ namespace Clinic.UI.Services
         }
     }
 }
+
+
+
+

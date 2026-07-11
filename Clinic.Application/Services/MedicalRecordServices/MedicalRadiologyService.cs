@@ -61,6 +61,32 @@ namespace Clinic.Application.Services.MedicalRecordServices
             return result;
         }
 
+        public async Task<PageResult<MedicalRadiologyInfoDTO>> GetPageMedicalRadiologiesForPatient(Guid medicalRecordId, int pageNumber = 1, int pageSize = 10)
+        {
+            var result = await _unitOfWork.Repository<MedicalRadiology>().GetPageResult(
+                pageNumber,
+                pageSize,
+                filter: a => a.MedicalRecordId == medicalRecordId
+                        && a.CurrentState == CurrentState.Active,
+                selectors: a => new MedicalRadiologyInfoDTO
+                {
+                    Id = a.Id,
+                    File = a.File,
+                    MedicalRecordId = a.MedicalRecordId,
+                    CurrentState = a.CurrentState,
+                    Diagnosis = a.MedicalRecord.Diagnosis,
+                    DoctorId = a.MedicalRecord.DoctorId,
+                    Description = a.Description,
+                    PatientName = a.MedicalRecord.Patient.FirstName + " " + a.MedicalRecord.Patient.MiddleName + " " + a.MedicalRecord.Patient.LastName,
+                },
+                orderby: a => a.CreatedDate,
+                isDesending: true,
+                includers: a => a.MedicalRecord
+            );
+
+            return result;
+        }
+
         public async Task<List<MedicalRadiologyInfoDTO>> GetMedicalRadiologies(Guid medicalRecordId)
         {
             var doctorId = await _doctorService.GetDoctorId();

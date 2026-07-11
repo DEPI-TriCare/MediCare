@@ -11,6 +11,7 @@ namespace Clinic.Application.Contracts.MedicalRecordContracts
 {
     public interface IMedicalRadiologyService : IBaseService<MedicalRadiology, MedicalRadiologyDTO>
     {
+        Task<PageResult<MedicalRadiologyInfoDTO>> GetPageMedicalRadiologiesForPatient(Guid medicalRecordId, int pageNumber = 1, int pageSize = 10);
         Task<PageResult<MedicalRadiologyInfoDTO>> GetPageMedicalRadiologies(Guid medicalRecordId, int pageNumber = 1, int pageSize = 10);
         Task<List<MedicalRadiologyInfoDTO>> GetMedicalRadiologies(Guid medicalRecordId);
         Task<(bool, Guid)> DeleteMedicalRadiology(Guid Id);

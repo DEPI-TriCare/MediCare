@@ -121,6 +121,32 @@ namespace Clinic.Application.Services.AppointmentServices
             return result;
         }
 
+        public async Task<PageResult<AppointmentInfoDTO>> GetMedicalRecordAppointmentsForPatient(Guid patientId, int pageNumber = 1, int pageSize = 10)
+        {
+            var result = await _unitOfWork.Repository<Appointment>().GetPageResult(
+                pageNumber,
+                pageSize,
+                filter: a => a.CurrentState == CurrentState.Active
+                        && a.PatientId == patientId,
+                selectors: a => new AppointmentInfoDTO
+                {
+                    Id = a.Id,
+                    DoctorId = a.DoctorId,
+                    PatientId = a.PatientId,
+                    AppointmentTypeId = a.AppointmentTypeId,
+                    DoctorName = a.Doctor.Name,
+                    PatientName = a.Patient.FirstName + a.Patient.MiddleName + a.Patient.LastName,
+                    AppointmentTypeName = a.AppointmentType.EName,
+                    AppointmentDate = a.AppointmentDate,
+                    AppointmentStatus = a.AppointmentStatus,
+                },
+                orderby: a => a.CreatedDate,
+                isDesending: true
+            );
+
+            return result;
+        }
+
         public async Task<AppointmentInfoDTO> GetAppointmentDetails(Guid appointmentId)
         {
             var result = await _unitOfWork.Repository<Appointment>().GetResultForOne(

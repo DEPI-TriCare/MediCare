@@ -1,1 +1,94 @@
-﻿
+﻿@model List<DocMedicalRecord>
+
+@{
+    ViewData["Title"] = "Medical Records";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/patient/css/medicalrecord/index.css" />
+}
+
+<div class="mr-page">
+
+    <div class="mr-page-header">
+        <div>
+            <h2 class="mr-page-title">
+                <i class="fa-solid fa-file-waveform"></i>
+                Medical Records
+            </h2>
+            <p class="mr-page-subtitle">All medical records linked to your account</p>
+        </div>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="mr-grid">
+            @foreach (var record in Model)
+            {
+                <div class="mr-card">
+
+                    <div class="mr-card-header">
+                        <div class="mr-card-icon">
+                            <i class="fa-solid fa-notes-medical"></i>
+                        </div>
+                        <div>
+                            <div class="mr-card-title">@record.PatientName</div>
+                            <div class="mr-card-doctor">
+                                <i class="fa-solid fa-user-doctor"></i>
+                                Dr. @record.DoctorName
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mr-card-body">
+                        <div class="mr-info-row">
+                            <span class="mr-info-label">
+                                <i class="fa-solid fa-droplet"></i> Blood Type
+                            </span>
+                            <span class="mr-badge">@record.BloodType</span>
+                        </div>
+
+                        <div class="mr-info-row">
+                            <span class="mr-info-label">
+                                <i class="fa-solid fa-cake-candles"></i> Birth Date
+                            </span>
+                            <span class="mr-info-value">@record.BirthDate.ToString("dd MMM yyyy")</span>
+                        </div>
+
+                        <div class="mr-info-row">
+                            <span class="mr-info-label">
+                                <i class="fa-solid fa-stethoscope"></i> Diagnosis
+                            </span>
+                            <span class="mr-info-value mr-truncate">@(string.IsNullOrWhiteSpace(record.Diagnosis) ? "—" : record.Diagnosis)</span>
+                        </div>
+
+                        <div class="mr-info-row">
+                            <span class="mr-info-label">
+                                <i class="fa-solid fa-triangle-exclamation"></i> Allergy
+                            </span>
+                            <span class="mr-info-value mr-truncate">@(string.IsNullOrWhiteSpace(record.Allergy) ? "None" : record.Allergy)</span>
+                        </div>
+                    </div>
+
+                    <div class="mr-card-footer">
+                        <a asp-area="patient" asp-controller="MedicalRecord" asp-action="Details" asp-route-Id="@record.Id"
+                           class="mr-btn-details">
+                            <i class="fa-solid fa-circle-info"></i>
+                            View Details
+                        </a>
+                    </div>
+
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="mr-empty-state">
+            <i class="fa-solid fa-folder-open"></i>
+            <h4>No Medical Records Found</h4>
+            <p>There are no medical records available at the moment.</p>
+        </div>
+    }
+
+</div>

@@ -1,0 +1,170 @@
+﻿/* ============================================================
+   Dream Medical Center - Add Patient Page
+   Matches the color/identity system used in PatLayout.css
+   Primary accent: #1D9E75 (teal-green)
+   ============================================================ */
+
+:root {
+    --dmc-primary: #1D9E75;
+    --dmc-primary-dark: #167A5B;
+    --dmc-primary-light: #E6F6F1;
+    --dmc-text: #1F2A2E;
+    --dmc-text-muted: #6C7A79;
+    --dmc-border: #E1E7E6;
+    --dmc-bg: #F6F9F8;
+    --dmc-danger: #E5484D;
+    --dmc-radius: 14px;
+    --dmc-shadow: 0 6px 20px rgba(29, 158, 117, 0.08);
+}
+
+.container-fluid {
+    padding: 24px;
+    background: var(--dmc-bg);
+}
+
+/* ---------- Card ---------- */
+.admin-card {
+    background: #ffffff;
+    border-radius: var(--dmc-radius);
+    box-shadow: var(--dmc-shadow);
+    border: 1px solid var(--dmc-border);
+    overflow: hidden;
+}
+
+.card-header-custom {
+    background: linear-gradient(135deg, var(--dmc-primary) 0%, var(--dmc-primary-dark) 100%);
+    padding: 20px 28px;
+}
+
+    .card-header-custom h3 {
+        color: #ffffff;
+        font-size: 1.15rem;
+        font-weight: 600;
+        margin: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .card-header-custom i {
+        color: #ffffff;
+    }
+
+.card-body-custom {
+    padding: 32px 28px;
+}
+
+/* ---------- Form ---------- */
+.input-group-custom {
+    margin-bottom: 22px;
+}
+
+.form-label-custom {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--dmc-text);
+    margin-bottom: 8px;
+}
+
+.form-control-custom {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 0.92rem;
+    color: var(--dmc-text);
+    background-color: #ffffff;
+    border: 1.5px solid var(--dmc-border);
+    border-radius: 10px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .form-control-custom::placeholder {
+        color: #A7B3B1;
+    }
+
+    .form-control-custom:focus {
+        outline: none;
+        border-color: var(--dmc-primary);
+        box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.15);
+    }
+
+select.form-control-custom {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236C7A79' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+}
+
+.text-danger {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--dmc-danger);
+    margin-top: 6px;
+}
+
+/* ---------- Buttons ---------- */
+.btn-create-user {
+    background: var(--dmc-primary);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 11px 26px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+    .btn-create-user:hover {
+        background: var(--dmc-primary-dark);
+        color: #ffffff;
+        transform: translateY(-1px);
+    }
+
+    .btn-create-user:active {
+        transform: translateY(0);
+    }
+
+.btn-back-list {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    color: var(--dmc-text-muted);
+    border: 1.5px solid var(--dmc-border);
+    border-radius: 10px;
+    padding: 10px 22px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+    .btn-back-list:hover {
+        color: var(--dmc-primary);
+        border-color: var(--dmc-primary);
+        background: var(--dmc-primary-light);
+    }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    .card-body-custom {
+        padding: 22px 18px;
+    }
+
+    .card-header-custom {
+        padding: 16px 20px;
+    }
+
+    .text-end {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 12px;
+    }
+
+    .btn-back-list,
+    .btn-create-user {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}

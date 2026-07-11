@@ -170,6 +170,40 @@ namespace Clinic.Application.Services.MedicalRecordServices
             return result;
         }
 
+        public async Task<List<DocMedicalRecord>> GetMedicalRecordsForUser()
+        {
+            var userId = _userService.GetLoggedInUser().ToString();
+
+            var result = await _unitOfWork.Repository<MedicalRecord>().GetResult(
+                filter: a => a.Patient.UserId == userId &&
+                        a.CurrentState == CurrentState.Active,
+                selectors: a => new DocMedicalRecord
+                {
+                    Id = a.Id,
+                    DoctorId = a.DoctorId,
+                    PatientId = a.PatientId,
+                    PatientName = a.Patient.FirstName + " " + a.Patient.MiddleName + " " + a.Patient.LastName,
+                    NationalNumber = a.Patient.NationalNumber,
+                    BloodType = a.Patient.BloodType,
+                    Gender = a.Patient.Gender,
+                    BirthDate = a.Patient.BirthDate,
+                    PhoneNumber = a.Patient.PhoneNumber,
+                    Email = a.Patient.Email,
+                    Allergy = a.Allergy,
+                    Diagnosis = a.Diagnosis,
+                    ChronicDisease = a.ChronicDisease,
+                    CurrentMedications = a.CurrentMedications,
+                    DoctorName = a.Doctor.Name,
+                    Notes = a.Notes
+                },
+                orderby: a => a.CreatedDate,
+                isDesending: true,
+                includers: a => a.Patient
+            );
+
+            return result;
+        }
+
         public async Task<List<MedicalRecordDTO>> GetPatientMedicalRecords(Guid patientId)
         {
             var result = await _unitOfWork.Repository<MedicalRecord>().GetResult(
@@ -188,30 +222,30 @@ namespace Clinic.Application.Services.MedicalRecordServices
             return result;
         }
 
-        public async Task<List<MedicalRecordDTO>> GetMedicalRecordsForUser()
-        {
-            var userId = _userService.GetLoggedInUser().ToString();
+        //public async Task<List<MedicalRecordDTO>> GetMedicalRecordsForUser()
+        //{
+        //    var userId = _userService.GetLoggedInUser().ToString();
 
-            var patient = await _unitOfWork.Repository<Patient>()
-                .GetFirstOrDefault(a => a.CurrentState == CurrentState.Active
-                    && a.UserId == userId
-                );
+        //    var patient = await _unitOfWork.Repository<Patient>()
+        //        .GetFirstOrDefault(a => a.CurrentState == CurrentState.Active
+        //            && a.UserId == userId
+        //        );
 
-            var result = await _unitOfWork.Repository<MedicalRecord>().GetResult(
-                filter: a => a.CurrentState == CurrentState.Active
-                        && a.PatientId == patient.Id,
-                selectors: a => new MedicalRecordDTO
-                {
-                    Id = a.Id,
-                    PatientId = a.PatientId,
-                    DoctorId = a.DoctorId
-                },
-                orderby: a => a.CreatedDate,
-                isDesending: true
-            );
+        //    var result = await _unitOfWork.Repository<MedicalRecord>().GetResult(
+        //        filter: a => a.CurrentState == CurrentState.Active
+        //                && a.PatientId == patient.Id,
+        //        selectors: a => new MedicalRecordDTO
+        //        {
+        //            Id = a.Id,
+        //            PatientId = a.PatientId,
+        //            DoctorId = a.DoctorId
+        //        },
+        //        orderby: a => a.CreatedDate,
+        //        isDesending: true
+        //    );
 
-            return result;
-        }
+        //    return result;
+        //}
 
         public async Task<MedicalRecordDTO> GetDocPatientMedicalRecords(Guid PatientId)
         {

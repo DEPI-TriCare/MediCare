@@ -38,7 +38,7 @@ namespace Clinic.UI.Controllers
         [AllowAnonymous]
         public IActionResult Register()
         {
-            return View(new UserDTO());
+            return View(new PatientRegisterDTO());
         }
 
         [AllowAnonymous]
@@ -48,7 +48,7 @@ namespace Clinic.UI.Controllers
         }
 
         [AllowAnonymous]
-        public async Task<IActionResult> SignUp(UserDTO userDTO)
+        public async Task<IActionResult> SignUp(PatientRegisterDTO userDTO)
         {
             if (!ModelState.IsValid)
             {
@@ -59,7 +59,7 @@ namespace Clinic.UI.Controllers
 
             if (result.success)
             {
-                return Redirect("/patient/Home/Index");
+                return RedirectToAction("Login");
             }
             else
             {
@@ -71,7 +71,6 @@ namespace Clinic.UI.Controllers
                 return View("Register", userDTO);
             }
         }
-
 
         [AllowAnonymous]
         public async Task<IActionResult> SignIn(LoginDTO loginDTO)
@@ -104,7 +103,11 @@ namespace Clinic.UI.Controllers
                 }
                 else if (role == "Reciptionist")
                 {
-                    return Redirect("/reciptionist/Appointment/Today");
+                    return Redirect("/Appointment/Today");
+                }
+                else if (role == "Patient")
+                {
+                    return Redirect("/Patient/Home/Index");
                 }
                 else
                 {

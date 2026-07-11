@@ -11,7 +11,7 @@ namespace Clinic.Application.Contracts.MedicalRecordContracts
 {
     public interface ITestService : IBaseService<Test, TestDTO>
     {
-
+        Task<PageResult<TestInfoDTO>> GetPageTestsForPatient(Guid medicalRecordId, int pageNumber = 1, int pageSize = 10);
         Task<PageResult<TestInfoDTO>> GetPageTests(Guid medicalRecordId, int pageNumber = 1, int pageSize = 10);
         Task<List<TestInfoDTO>> GetTests(Guid medicalRecordId);
         Task<(bool, Guid)> DeleteTest(Guid Id);

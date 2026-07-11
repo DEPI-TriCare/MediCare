@@ -7,7 +7,6 @@ namespace Clinic.UI.Services
     {
         public static async Task SeedAdminAsync(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, string password)
         {
-            // 1. إنشاء الدور Admin لو مش موجود
             var adminRoleExists = await roleManager.RoleExistsAsync("Admin");
             if (!adminRoleExists)
             {
@@ -20,10 +19,10 @@ namespace Clinic.UI.Services
                 await roleManager.CreateAsync(new IdentityRole("Doctor"));
             }
 
-            var reciptionistRoleExists = await roleManager.RoleExistsAsync("Reciptionist");
-            if (!reciptionistRoleExists)
+            var patientRoleExists = await roleManager.RoleExistsAsync("Patient");
+            if (!patientRoleExists)
             {
-                await roleManager.CreateAsync(new IdentityRole("Reciptionist"));
+                await roleManager.CreateAsync(new IdentityRole("Patient"));
             }
 
             var developerRoleExists = await roleManager.RoleExistsAsync("Developer");
@@ -32,7 +31,13 @@ namespace Clinic.UI.Services
                 await roleManager.CreateAsync(new IdentityRole("Developer"));
             }
 
-            // 2. إنشاء حساب Admin لو مش موجود
+
+            var reciptionistRoleExists = await roleManager.RoleExistsAsync("Reciptionist");
+            if (!reciptionistRoleExists)
+            {
+                await roleManager.CreateAsync(new IdentityRole("Reciptionist"));
+            }
+
             var adminUser = await userManager.FindByNameAsync("admin");
             if (adminUser == null)
             {

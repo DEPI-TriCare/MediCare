@@ -1,0 +1,229 @@
+﻿/* ============================================================
+   Dream Medical Center - Medical Records (Blue Medical Theme)
+   ============================================================ */
+
+:root {
+    --mr-primary: #1565C0;
+    --mr-primary-dark: #0D47A1;
+    --mr-primary-light: #E8F1FC;
+    --mr-accent: #2E9EF7;
+    --mr-text: #1B2733;
+    --mr-text-muted: #63737F;
+    --mr-border: #DCE7F2;
+    --mr-bg: #F4F8FC;
+    --mr-danger: #E5484D;
+    --mr-radius: 16px;
+    --mr-shadow: 0 8px 24px rgba(21, 101, 192, 0.08);
+    --mr-shadow-hover: 0 14px 32px rgba(21, 101, 192, 0.16);
+}
+
+/* ---------- Page ---------- */
+.mr-page {
+    padding: 24px;
+    background: var(--mr-bg);
+}
+
+.mr-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 26px;
+}
+
+.mr-page-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--mr-text);
+    margin: 0;
+}
+
+    .mr-page-title i {
+        color: var(--mr-primary);
+        background: var(--mr-primary-light);
+        padding: 10px;
+        border-radius: 12px;
+        font-size: 1.1rem;
+    }
+
+.mr-page-subtitle {
+    color: var(--mr-text-muted);
+    font-size: 0.9rem;
+    margin: 6px 0 0 0;
+}
+
+/* ---------- Grid ---------- */
+.mr-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 22px;
+}
+
+/* ---------- Card ---------- */
+.mr-card {
+    background: #ffffff;
+    border: 1px solid var(--mr-border);
+    border-radius: var(--mr-radius);
+    box-shadow: var(--mr-shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .mr-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--mr-shadow-hover);
+    }
+
+.mr-card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 22px;
+    background: linear-gradient(135deg, var(--mr-primary) 0%, var(--mr-primary-dark) 100%);
+}
+
+.mr-card-icon {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 1.15rem;
+}
+
+.mr-card-title {
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.mr-card-doctor {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.82rem;
+    margin-top: 3px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.mr-card-body {
+    padding: 18px 22px;
+    flex: 1;
+}
+
+.mr-info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 0;
+    border-bottom: 1px dashed var(--mr-border);
+}
+
+    .mr-info-row:last-child {
+        border-bottom: none;
+    }
+
+.mr-info-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: var(--mr-text-muted);
+    font-weight: 600;
+}
+
+    .mr-info-label i {
+        color: var(--mr-primary);
+        width: 14px;
+    }
+
+.mr-info-value {
+    font-size: 0.85rem;
+    color: var(--mr-text);
+    font-weight: 600;
+    text-align: right;
+    max-width: 55%;
+}
+
+.mr-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mr-badge {
+    background: var(--mr-primary-light);
+    color: var(--mr-primary-dark);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 999px;
+}
+
+/* ---------- Footer ---------- */
+.mr-card-footer {
+    padding: 16px 22px;
+    border-top: 1px solid var(--mr-border);
+    background: #FAFCFE;
+}
+
+.mr-btn-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 0;
+    background: var(--mr-primary);
+    color: #ffffff;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+    .mr-btn-details:hover {
+        background: var(--mr-primary-dark);
+        color: #ffffff;
+    }
+
+/* ---------- Empty State ---------- */
+.mr-empty-state {
+    text-align: center;
+    padding: 70px 20px;
+    color: var(--mr-text-muted);
+}
+
+    .mr-empty-state i {
+        font-size: 2.6rem;
+        color: var(--mr-accent);
+        margin-bottom: 14px;
+    }
+
+    .mr-empty-state h4 {
+        color: var(--mr-text);
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 576px) {
+    .mr-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mr-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+}

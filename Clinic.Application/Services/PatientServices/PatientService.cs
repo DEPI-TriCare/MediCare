@@ -142,6 +142,11 @@ namespace Clinic.Application.Services.PatientService
                                     && a.UserId == userId
                 );
 
+            if (patient == null)
+            {
+                return Guid.Empty;
+            }
+
             return patient.Id;
         }
 

@@ -5,11 +5,13 @@ using Clinic.Application.DTOs.MedicalRecordDTOs;
 using Clinic.Application.Services.MedicalRecordServices;
 using Clinic.Core.Entities;
 using Clinic.UI.Areas.patient.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Clinic.UI.Areas.patient.Controllers
 {
     [Area("patient")]
+    [Authorize(Roles = "Patient")]
     public class MedicalRecordController : Controller
     {
         private readonly IMedicalRecordService _medicalRecordService;
@@ -42,9 +44,9 @@ namespace Clinic.UI.Areas.patient.Controllers
 
             var result = medicalRecord.DocMedicalRecord;
 
-            medicalRecord.Tests = await _testService.GetPageTests(result.Id, medicalRecordPagination.TestPageNumber, medicalRecordPagination.TestPageSize);
-            medicalRecord.MedicalRadiologies = await _medicalRadiologyService.GetPageMedicalRadiologies(result.Id, medicalRecordPagination.MedicalRadilogyPageNumber, medicalRecordPagination.MedicalRadilogyPageSize);
-            medicalRecord.Appointments = await _appointmentService.GetMedicalRecordAppointments(result.PatientId, medicalRecordPagination.AppointmentPageNumber, medicalRecordPagination.AppointmentPageSize);
+            medicalRecord.Tests = await _testService.GetPageTestsForPatient(result.Id, medicalRecordPagination.TestPageNumber, medicalRecordPagination.TestPageSize);
+            medicalRecord.MedicalRadiologies = await _medicalRadiologyService.GetPageMedicalRadiologiesForPatient(result.Id, medicalRecordPagination.MedicalRadilogyPageNumber, medicalRecordPagination.MedicalRadilogyPageSize);
+            medicalRecord.Appointments = await _appointmentService.GetMedicalRecordAppointmentsForPatient(result.PatientId, medicalRecordPagination.AppointmentPageNumber, medicalRecordPagination.AppointmentPageSize);
 
             return View(medicalRecord);
         }

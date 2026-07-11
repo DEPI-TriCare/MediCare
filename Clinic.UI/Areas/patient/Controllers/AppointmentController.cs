@@ -6,11 +6,13 @@ using Clinic.Application.Contracts.UserContract;
 using Clinic.Application.DTOs.AppointmentDTOs;
 using Clinic.Application.DTOs.ScheduleDTOs;
 using Clinic.Application.Helper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Clinic.UI.Areas.patient.Controllers
 {
     [Area("patient")]
+    [Authorize(Roles = "Patient")]
     public class AppointmentController : Controller
     {
         private readonly IAppointmentService _appointmentService;
@@ -32,7 +34,6 @@ namespace Clinic.UI.Areas.patient.Controllers
 
         public async Task<IActionResult> Index(PatientSearchAppointment searchAppointment , int pageNumber = 1, int pageSize = 10)
         {
-            var patientId = await _patientService.GetPatientId();
             var result = await _appointmentService.PatientSearchAppointments(searchAppointment, pageNumber, pageSize);
 
             ViewBag.lstDoctors = await _doctorService.GetAll();

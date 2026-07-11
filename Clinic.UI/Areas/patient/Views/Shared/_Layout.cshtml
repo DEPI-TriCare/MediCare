@@ -18,7 +18,7 @@
     <title>@ViewData["Title"] - Dream Medical Center</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
-    <link rel="stylesheet" href="~/css/_Reclayout.css" />
+    <link rel="stylesheet" href="~/patient/css/PatLayout.css" />
     @RenderSection("Styles", false)
 </head>
 <body>
@@ -43,31 +43,42 @@
                 <div class="dmc-nav-section">
                     <div class="dmc-nav-label">Home</div>
                     <a class="dmc-nav-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")"
-                       asp-area="" asp-controller="Home" asp-action="Index">
+                       asp-area="patient" asp-controller="Home" asp-action="Index">
                         <i class="fa-solid fa-house fa-fw"></i> Home
                     </a>
                 </div>
 
                 <div class="dmc-nav-section">
                     <div class="dmc-nav-label">Profile</div>
-                    <a class="dmc-nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "Profile" ? "active" : "")"
-                       asp-area="" asp-controller="Account" asp-action="Profile">
-                        <i class="fa-solid fa-user-md fa-fw"></i> Profile
+                    <a class="dmc-nav-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Patient" && ViewContext.RouteData.Values["action"]?.ToString() == "Details" ? "active" : "")"
+                       asp-area="patient" asp-controller="Patient" asp-action="Details">
+                        <i class="fas fa-user-tie"></i>
+                        Profile
                     </a>
                 </div>
 
                 <div class="dmc-nav-section">
                     <div class="dmc-nav-label">Medical Records</div>
                     <a class="dmc-nav-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "MedicalRecord" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")"
-                       asp-controller="MedicalRecord" asp-action="Index">
-                        <i class="fa-solid fa-users fa-fw"></i> Medical Records
+                        asp-area="patient" asp-controller="MedicalRecord" asp-action="Index">
+                        <i class="fa-solid fa-file-waveform"></i>
+                        Medical Records
                     </a>
                 </div>
 
                 <div class="dmc-nav-section">
-                    <div class="dmc-nav-label">Scheduling</div>
+                    <div class="dmc-nav-label">Doctors</div>
+                    <a class="dmc-nav-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Doctor" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")"
+                       asp-area="patient" asp-controller="Doctor" asp-action="Index">
+                        <i class="fa-solid fa-user-doctor"></i>
+                        Doctors
+                    </a>
+                </div>
+
+                <div class="dmc-nav-section">
+                    <div class="dmc-nav-label">Appointments</div>
                     <a class="dmc-nav-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Appointment" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")"
-                       asp-area="" asp-controller="Appointment" asp-action="Index">
+                       asp-area="patient" asp-controller="Appointment" asp-action="Index">
                         <i class="fa-solid fa-calendar-days fa-fw"></i> Appointments
                     </a>
                 </div>
@@ -75,8 +86,9 @@
                 <div class="dmc-nav-section">
                     <div class="dmc-nav-label">Logout</div>
                     <a class="dmc-nav-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Account" && ViewContext.RouteData.Values["action"]?.ToString() == "Logout" ? "active" : "")"
-                       asp-controller="Account"
-                       asp-action="Logout">
+                        asp-area=""   
+                        asp-controller="Account"
+                        asp-action="Logout">
                         <i class="fa-solid fa-right-from-bracket fa-fw"></i> Logout
                     </a>
                 </div>
@@ -137,7 +149,7 @@
                 </div>
             </header>
 
-            <main class="dmc-content" role="main">
+            <main class="dmc-content">
                 @RenderBody()
             </main>
 

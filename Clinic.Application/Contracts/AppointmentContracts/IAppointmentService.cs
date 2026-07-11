@@ -25,7 +25,7 @@ namespace Clinic.Application.Contracts.AppointmentContracts
         Task<PageResult<AppointmentInfoDTO>> GetPatientAppointments(Guid patientId, int pageNumber = 1, int pageSize = 10);
         Task<PageResult<AppointmentInfoDTO>> GetMedicalRecordAppointments(Guid patientId, int pageNumber = 1, int pageSize = 10);
         Task<PageResult<AppointmentInfoDTO>> PatientSearchAppointments(PatientSearchAppointment searchAppointment, int pageNumber = 1, int pageSize = 10);
-        
+        Task<PageResult<AppointmentInfoDTO>> GetMedicalRecordAppointmentsForPatient(Guid patientId, int pageNumber = 1, int pageSize = 10);
         #endregion
 
         #region Create && Update

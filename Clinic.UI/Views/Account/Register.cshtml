@@ -1,78 +1,78 @@
-﻿@model UserDTO
-
+﻿@model PatientRegisterDTO
 @{
     Layout = null;
     ViewData["PageTitle"] = "User Management";
-    ViewData["PageSubtitle"] = "Register a new staff member to the Dream Medical Center";
+    ViewData["PageSubtitle"] = "Register";
 }
-
-@section Styles {
-    <link rel="stylesheet" href="~/css/User/register.css" />
-}
-
-<div class="container-fluid">
-    <div class="admin-card">
-        <div class="card-header-custom">
-            <h3><i class="fas fa-user-plus me-2"></i> Register </h3>
-        </div>
-        <div class="card-body-custom">
-            <form method="post" asp-action="SignUp">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="input-group-custom">
-                            <label class="form-label-custom">First Name</label>
-                            <input asp-for="FirstName" class="form-control-custom" placeholder="First Name" />
-                            <span asp-validation-for="FirstName" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="input-group-custom">
-                            <label class="form-label-custom">Last Name</label>
-                            <input asp-for="LastName" class="form-control-custom" placeholder="Last Name" />
-                            <span asp-validation-for="LastName" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="input-group-custom">
-                            <label class="form-label-custom">Phone Number</label>
-                            <input asp-for="PhoneNumber" class="form-control-custom" placeholder="+1 234..." />
-                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="input-group-custom">
-                            <label class="form-label-custom">Username</label>
-                            <input asp-for="UserName" class="form-control-custom" placeholder="e.g. john_dream" />
-                            <span asp-validation-for="UserName" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="input-group-custom">
-                            <label class="form-label-custom">Security Password</label>
-                            <input asp-for="Password" type="password" class="form-control-custom" placeholder="••••••••" />
-                            <span asp-validation-for="Password" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="input-group-custom">
-                            <label class="form-label-custom">Confirm Password</label>
-                            <input asp-for="ConfirmPassword" type="password" class="form-control-custom" placeholder="••••••••" />
-                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                        </div>
-                    </div>
+<!DocType html> 
+<html>
+    <head>
+        <link rel="stylesheet" href="~/css/User/register.css" />    
+        <title>Register</title>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="admin-card">
+                <div class="card-header-custom">
+                    <h3><i class="fas fa-user-plus me-2"></i> Register </h3>
                 </div>
+                <div class="card-body-custom">
+                    <form method="post" asp-action="SignUp">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group-custom">
+                                    <label class="form-label-custom">First Name</label>
+                                    <input asp-for="FirstName" class="form-control-custom" placeholder="First Name" />
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group-custom">
+                                    <label class="form-label-custom">Last Name</label>
+                                    <input asp-for="LastName" class="form-control-custom" placeholder="Last Name" />
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group-custom">
+                                    <label class="form-label-custom">Phone Number</label>
+                                    <input asp-for="PhoneNumber" class="form-control-custom" placeholder="+1 234..." />
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group-custom">
+                                    <label class="form-label-custom">Username</label>
+                                    <input asp-for="UserName" class="form-control-custom" placeholder="e.g. john_dream" />
+                                    <span asp-validation-for="UserName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group-custom">
+                                    <label class="form-label-custom">Security Password</label>
+                                    <input asp-for="Password" type="password" class="form-control-custom" placeholder="••••••••" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group-custom">
+                                    <label class="form-label-custom">Confirm Password</label>
+                                    <input asp-for="ConfirmPassword" type="password" class="form-control-custom" placeholder="••••••••" />
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="text-end">
-                    <button type="submit" class="btn btn-create-user">
-                        <i class="fas fa-check-circle me-2"></i>
-                        Register
-                    </button>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-create-user">
+                                <i class="fas fa-check-circle me-2"></i>
+                                Register
+                            </button>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
-</div>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+        <partial name="_ValidationScriptsPartial" />
+    </body>
+</html>

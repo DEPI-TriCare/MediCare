@@ -18,14 +18,14 @@ namespace Clinic.UI.Areas.admin.Controllers
         }
 
 
-        //[Authorize(Roles = "Admin , Developer")]
+        [Authorize(Roles = "Admin , Developer")]
         public async Task<IActionResult> Index()
         {
             var users = await _userService.GetAllUsers();
             return View(users);
         }
 
-        //[Authorize(Roles = "Admin , Developer")]
+        [Authorize(Roles = "Admin , Developer")]
         public async Task<IActionResult> Details(string userId)
         {
             var user = await _userService.GetUserByIdAsync(userId);
@@ -41,7 +41,7 @@ namespace Clinic.UI.Areas.admin.Controllers
             }
         }
 
-        //[Authorize(Roles = "Admin , Developer")]
+        [Authorize(Roles = "Admin , Developer")]
         public async Task<IActionResult> Register()
         {
             ViewBag.lstRoles = await _userService.GetAllRoles();
@@ -71,7 +71,7 @@ namespace Clinic.UI.Areas.admin.Controllers
             }
         }
 
-        //[Authorize(Roles = "Admin , Developer")]
+        [Authorize(Roles = "Admin , Developer")]
         public async Task<IActionResult> SignUp(UserDTO userDTO)
         {
             if (!ModelState.IsValid)
@@ -90,7 +90,7 @@ namespace Clinic.UI.Areas.admin.Controllers
             }
             else if (result.Item1.success && !roleCheck)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "User");
             }
             else
             {
@@ -116,7 +116,7 @@ namespace Clinic.UI.Areas.admin.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-        //[Authorize(Roles = "Admin , Developer")]
+        [Authorize(Roles = "Admin , Developer")]
         public async Task<IActionResult> DeleteUser(string userId)
         {
             var result = await _userService.DeleteUser(userId);
@@ -136,7 +136,7 @@ namespace Clinic.UI.Areas.admin.Controllers
             }
         }
 
-        //[Authorize(Roles = "Admin , Developer")]
+        [Authorize(Roles = "Admin , Developer")]
         public async Task<IActionResult> ChangeUserRole(string userId)
         {
             var result = await _userService.ChangeUserRole(userId);
@@ -156,7 +156,7 @@ namespace Clinic.UI.Areas.admin.Controllers
             }
         }
 
-        //[Authorize(Roles = "Admin , Developer")]
+        [Authorize(Roles = "Admin , Developer")]
         [HttpGet]
         public async Task<IActionResult> UpdateUser(string userId)
         {
@@ -179,7 +179,7 @@ namespace Clinic.UI.Areas.admin.Controllers
             return View(updateUserDTO);
         }
 
-        //[Authorize(Roles = "Admin , Developer")]
+        [Authorize(Roles = "Admin , Developer")]
         [HttpPost]
         public async Task<IActionResult> UpdateUser(UpdateUserDTO updateUserDTO)
         {
@@ -199,13 +199,13 @@ namespace Clinic.UI.Areas.admin.Controllers
             }
         }
 
-        //[Authorize(Roles = "Admin , Developer")]
+        [Authorize(Roles = "Admin , Developer")]
         public IActionResult ResetPassword(string userId)
         {
             return View(new ResetPasswordDTO { UserId = userId });
         }
 
-        //[Authorize(Roles = "Admin , Developer")]
+        [Authorize(Roles = "Admin , Developer")]
         [HttpPost]
         public async Task<IActionResult> ResetPassword(ResetPasswordDTO resetPasswordDTO)
         {
