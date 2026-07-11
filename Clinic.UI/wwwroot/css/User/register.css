@@ -1,0 +1,206 @@
+﻿/* =====================================================
+   Dream Medical Center — User Registration Page
+   Theme: Clinical Blue
+   ===================================================== */
+
+:root {
+    --primary-blue: #0d6efd;
+    --primary-blue-dark: #0b4f9e;
+    --primary-blue-darker: #083b78;
+    --primary-blue-light: #e8f1fd;
+    --accent-blue: #4dabf7;
+    --accent-teal: #14b8a6;
+    --text-dark: #1f2d3d;
+    --text-muted: #6b7c93;
+    --border-light: #dce6f5;
+    --bg-page: #f4f8fd;
+    --white: #ffffff;
+    --danger: #e63946;
+    --shadow-soft: 0 4px 20px rgba(13, 110, 253, 0.08);
+    --shadow-hover: 0 8px 28px rgba(13, 110, 253, 0.15);
+    --radius: 14px;
+}
+
+body {
+    background-color: var(--bg-page);
+    background-image: radial-gradient(circle at 0% 0%, rgba(77, 171, 247, 0.08) 0%, transparent 45%), radial-gradient(circle at 100% 100%, rgba(20, 184, 166, 0.06) 0%, transparent 45%);
+    font-family: 'Segoe UI', 'Poppins', Tahoma, sans-serif;
+    color: var(--text-dark);
+}
+
+.container-fluid {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* ---------- Admin Card ---------- */
+.admin-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-light);
+    max-width: 850px;
+    width: 100%;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+    animation: fadeInUp 0.5s ease;
+}
+
+    .admin-card:hover {
+        box-shadow: var(--shadow-hover);
+    }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- Card Header ---------- */
+.card-header-custom {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 60%, var(--primary-blue-darker) 100%);
+    padding: 28px 32px;
+    position: relative;
+    overflow: hidden;
+}
+
+    .card-header-custom::before {
+        content: "";
+        position: absolute;
+        top: -40%;
+        right: -10%;
+        width: 220px;
+        height: 220px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 50%;
+    }
+
+    .card-header-custom::after {
+        content: "";
+        position: absolute;
+        bottom: -60%;
+        left: -5%;
+        width: 160px;
+        height: 160px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 50%;
+    }
+
+    .card-header-custom h3 {
+        color: var(--white);
+        font-weight: 600;
+        font-size: 1.5rem;
+        margin: 0;
+        position: relative;
+        z-index: 1;
+        letter-spacing: 0.3px;
+    }
+
+        .card-header-custom h3 i {
+            color: var(--accent-teal);
+            filter: drop-shadow(0 0 6px rgba(20, 184, 166, 0.4));
+        }
+
+/* ---------- Card Body ---------- */
+.card-body-custom {
+    padding: 36px 32px;
+    background: var(--white);
+}
+
+/* ---------- Form Fields ---------- */
+.input-group-custom {
+    margin-bottom: 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label-custom {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary-blue-dark);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.form-control-custom {
+    padding: 12px 16px;
+    border: 1.5px solid var(--border-light);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    background-color: var(--bg-page);
+    transition: all 0.25s ease;
+    width: 100%;
+}
+
+    .form-control-custom::placeholder {
+        color: var(--text-muted);
+        opacity: 0.8;
+    }
+
+    .form-control-custom:focus {
+        outline: none;
+        border-color: var(--primary-blue);
+        background-color: var(--white);
+        box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.12);
+    }
+
+    .form-control-custom:hover:not(:focus) {
+        border-color: var(--accent-blue);
+    }
+
+.text-danger {
+    font-size: 0.8rem;
+    margin-top: 4px;
+    color: var(--danger);
+}
+
+/* ---------- Submit Button ---------- */
+.btn-create-user {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+    color: var(--white);
+    border: none;
+    padding: 13px 34px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 14px rgba(13, 110, 253, 0.3);
+    transition: all 0.25s ease;
+}
+
+    .btn-create-user:hover {
+        background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--primary-blue-darker) 100%);
+        box-shadow: 0 6px 20px rgba(13, 110, 253, 0.4);
+        transform: translateY(-2px);
+        color: var(--white);
+    }
+
+    .btn-create-user:active {
+        transform: translateY(0);
+    }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 767px) {
+    .card-header-custom,
+    .card-body-custom {
+        padding: 22px 20px;
+    }
+
+    .text-end {
+        text-align: center !important;
+    }
+
+    .btn-create-user {
+        width: 100%;
+    }
+}
